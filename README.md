@@ -5,6 +5,8 @@ Named after where too much of my time and money went, *The Abyss*.
 
 A keymap can be found [here](https://github.com/kvietcong/zmk-config/blob/master/config/the_abyss.keymap) and the shield can be found in [my ZMK config](https://github.com/kvietcong/zmk-config).
 
+Head to the [releases](https://github.com/kvietcong/the-abyss/releases) to download working ZMK firmware and generated gerbers from the Kicad file.
+
 ## Pictures
 ![Picture of keyboard outside](./docs/resources/outside.jpg)
 
