@@ -1,0 +1,303 @@
+points:
+  zones:
+    keys:
+      key:
+        padding: 17
+        origin: [0, -17]
+        bind: [1, 0]
+      columns:
+        pinky:
+          key:
+            splay: 15
+            spread: 18
+        ring:
+          key:
+            spread: 17
+            stagger: 12
+            splay: -10
+        middle:
+          key:
+            spread: 18
+            stagger: 5
+            splay: -5
+        index:
+          key:
+            spread: 18
+            stagger: -5
+            splay: -5
+        inner:
+          key:
+            spread: 18
+            stagger: -2
+      rows:
+        bottom: {}
+        home: {}
+        top: {}
+    thumb:
+      key:
+        padding: 17
+        bind: 1
+        row_net: R0
+      anchor:
+        ref: keys_inner_bottom
+        shift: [-16, -25]
+      columns:
+        inner:
+          key:
+            splay: 10
+            origin: [0, 10]
+            name: keys_thumb_inner
+        home:
+          key:
+            spread: 18
+            splay: -20
+            origin: [-10, -10]
+            name: keys_thumb_home
+        outer:
+          key:
+            spread: 18
+            splay: -20
+            origin: [-10, -10]
+            name: keys_thumb_outer
+            bind: [1, 3, 1, 1]
+outlines:
+  _raw:
+    - what: rectangle
+      where: true
+      bound: true
+      size: [14,14]
+  _switch_cutouts:
+  - what: rectangle
+    where: true
+    size: 14
+    #size: [18,17]
+    bound: false
+  _rounded_main:
+    - what: circle
+      radius: 75
+      where:
+        ref: keys_middle_top
+        shift: [5.5, -65]
+    - what: rectangle # left cutoff
+      size: 100
+      where:
+        ref: keys_pinky_home
+        shift: [-60, 0]
+      operation: subtract
+    - what: rectangle # right cutoff
+      size: 100
+      where:
+        ref: keys_index_home
+        shift: [80, 2]
+      operation: subtract
+    - what: rectangle # right cutoff
+      size: 50
+      where:
+        ref: keys_thumb_outer
+        shift: [30, 0]
+      operation: subtract
+    - what: rectangle # right cuttoff for thumb
+      size: 50
+      where:
+        ref: keys_thumb_outer
+        shift: [38, 0]
+      operation: subtract
+    - what: circle # thumb curve cutoff
+      radius: 57
+      where:
+        ref: keys_thumb_home
+        shift: [-.75, -65]
+      operation: subtract
+    - what: rectangle # bottom left cutoff
+      size: 100
+      where:
+        ref: keys_middle_bottom
+        shift: [-35, -91]
+      operation: subtract
+  _rounded_controller_area:
+    - what: rectangle
+      size: [34, 74]
+      where:
+        ref: keys_inner_home
+        shift: [18, -12]
+  _raw_panel:
+    - what: outline
+      name: _raw
+    - what: outline
+      name: _rounded_main
+    - what: outline
+      name: _rounded_controller_area
+  panel:
+    - what: outline
+      name: _raw_panel
+      fillet: 2
+  switch_plate:
+    main:
+      what: outline
+      name: panel
+      fillet: 0.5
+    keyholes:
+      what: outline
+      name: _switch_cutouts
+      operation: subtract
+cases:
+  switchplate:
+    - what: outline
+      name: switch_plate
+      extrude: 1.2
+  bottom:
+    - what: outline
+      name: panel
+      extrude: 1.2
+pcbs:
+  abyss:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          from: "{{name}}"
+          to: GND
+          keycaps: true
+          reverse: true
+          hotswap: true
+      choc:
+        what: choc
+        where: true
+        adjust:
+          rotate: 180
+        params:
+          to: "{{name}}"
+          from: GND
+          keycaps: true
+          reverse: true
+      controller:
+        what: nicenano
+        where:
+          ref: keys_inner_home
+          shift: [20, -1]
+          rotate: -90
+        params:
+          orientation: down
+
+          P20: keys_pinky_top
+          P5: keys_pinky_home
+          P15: keys_pinky_bottom
+
+          P2: keys_ring_top
+          P3: keys_ring_home
+          P6: keys_ring_bottom
+
+          P21: keys_middle_top
+          P18: keys_middle_home
+          P14: keys_middle_bottom
+
+          P1: keys_index_top
+          P19: keys_index_home
+          P10: keys_index_bottom
+
+          P0: keys_inner_top
+          P4: keys_inner_home
+          P16: keys_inner_bottom
+
+          P9: keys_thumb_inner
+          P8: keys_thumb_home
+          P7: keys_thumb_outer
+
+          P33: MOSI
+          P32: SCK
+          P31: CS
+      battery_connnector:
+        what: reversible_battery
+        where:
+          ref:
+            - keys_inner_bottom
+          shift: [31, -6]
+        params:
+          side: F
+          neg: GND
+          pos: B+
+      power_switch_top:
+        what: slider
+        where:
+          ref: keys_inner_home
+          shift: [20, 23]
+        params:
+          side: F
+          from: B+
+          to: RAW
+      power_switch_bottom:
+        what: slider
+        where:
+          ref: keys_inner_home
+          shift: [20, 23]
+        params:
+          side: B
+          from: B+
+          to: RAW
+      reset:
+        what: button2
+        where:
+          ref:
+            - keys_inner_bottom
+          shift: [19.5, -10]
+          rotate: 180
+        params:
+          side: F
+          from: GND
+          to: RST
+      niceview:
+        what: niceview
+        where:
+          ref:
+            - keys_inner_bottom
+          shift: [14.5, -6]
+          rotate: 90
+        params:
+          CS: CS
+          SCK: SCK
+          MOSI: MOSI
+      tenting_puck:
+        what: tenting_puck
+        adjust:
+          shift: [40, 32]
+          rotate: -5
+      mh1:
+        what: mountinghole
+        where:
+          ref:
+            - keys_thumb_outer
+          shift: [-1, 12]
+      mh2:
+        what: mountinghole
+        where:
+          ref:
+            - keys_pinky_bottom
+          shift: [-6, -13]
+      mh3:
+        what: mountinghole
+        where:
+          ref:
+            - keys_pinky_top
+          shift: [12, 12]
+      mh4:
+        what: mountinghole
+        where:
+          ref:
+            - keys_inner_top
+          shift: [32, 5]
+      mh5:
+        what: mountinghole
+        where:
+          ref:
+            - keys_thumb_inner
+          shift: [-12, -4]
+      mh6:
+        what: mountinghole
+        where:
+          ref:
+            - keys_middle_top
+          shift: [12, 6]
