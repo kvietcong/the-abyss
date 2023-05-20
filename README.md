@@ -1,11 +1,14 @@
 # The Abyss
-A low-profile diode-less 36-key keyboard with nice!view support. Designed with Ergogen and Kicad. Meant to be used with [ZMK](https://zmk.dev/).
+A low-profile diode-less 36-key keyboard with nice!view support.
+Designed with [Ergogen](https://github.com/ergogen/ergogen) and [Kicad](https://www.kicad.org/).
+Meant to be used with [ZMK](https://zmk.dev/).
 
 Named after where too much of my time and money went, *The Abyss*.
 
-A keymap can be found [here](https://github.com/kvietcong/zmk-config/blob/master/config/the_abyss.keymap) and the shield can be found in [my ZMK config](https://github.com/kvietcong/zmk-config).
-
-Head to the [releases](https://github.com/kvietcong/the-abyss/releases) to download working ZMK firmware and generated gerbers from the Kicad file.
+A keymap can be found [here](https://github.com/kvietcong/zmk-config/blob/master/config/the_abyss.keymap)
+and the shield can be found in [my ZMK config](https://github.com/kvietcong/zmk-config).
+Head to the [releases](https://github.com/kvietcong/the-abyss/releases)
+to download working ZMK firmware and generated gerbers from the Kicad file.
 
 ## Pictures
 ![Picture of keyboard outside](./docs/resources/outside.jpg)
@@ -13,12 +16,14 @@ Head to the [releases](https://github.com/kvietcong/the-abyss/releases) to downl
 ![Picture of keyboard inside](./docs/resources/inside.jpg)
 
 ## Info
-> The following is just a long-winded description and commentary of how I designed the board, ordered parts, and assembled it.
+> The following is just a long-winded description and commentary of how I
+> designed the board, ordered parts, and assembled it.
 
 TODO
 
 ## "Review"
-> The following is just me rambling about the keyboard and ways I'd might change it in another design.
+> The following is just me rambling about the keyboard and ways I'd might
+> change it in another design.
 
 TODO
 
