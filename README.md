@@ -1,4 +1,7 @@
 # The Abyss
+
+> I stared into *The Abyss* and it took all my money and time.
+
 A low-profile diode-less 36-key keyboard with nice!view support.
 Designed with [Ergogen](https://github.com/ergogen/ergogen) and [Kicad](https://www.kicad.org/).
 Meant to be used with [ZMK](https://zmk.dev/).
